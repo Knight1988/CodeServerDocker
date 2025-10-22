@@ -14,14 +14,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     which code-server && code-server --version
 
-# Copy VSIX files from the same folder as the Dockerfile
-COPY GitHub.copilot.vsix /tmp/GitHub.copilot.vsix
-COPY GitHub.copilot-chat.vsix /tmp/GitHub.copilot-chat.vsix
-
-# Install the VSIX extensions
-RUN code-server --install-extension /tmp/GitHub.copilot.vsix && \
-    code-server --install-extension /tmp/GitHub.copilot-chat.vsix && \
-    rm -f /tmp/*.vsix
+# Copy VSIX files to a permanent location
+COPY GitHub.copilot.vsix /usr/local/share/code-server-extensions/GitHub.copilot.vsix
+COPY GitHub.copilot-chat.vsix /usr/local/share/code-server-extensions/GitHub.copilot-chat.vsix
 
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
