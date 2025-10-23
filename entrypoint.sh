@@ -36,26 +36,6 @@ fi
 echo "Configuration setup completed."
 echo "================================================================"
 echo ""
-
-# Install extensions if not already installed
-EXTENSIONS_DIR="/config/.local/share/code-server/extensions"
-EXTENSION_SRC_DIR="/usr/local/share/code-server-extensions"
-
-echo "Checking extensions..."
-if [ -d "$EXTENSION_SRC_DIR" ]; then
-    echo "Installing extensions from $EXTENSION_SRC_DIR..."
-    for vsix in "$EXTENSION_SRC_DIR"/*.vsix; do
-        if [ -f "$vsix" ]; then
-            echo "Installing extension: $(basename "$vsix")"
-            code-server --user-data-dir /config/.local/share/code-server --install-extension "$vsix" || echo "Warning: Failed to install $(basename "$vsix")"
-        fi
-    done
-    echo "Extension installation completed."
-else
-    echo "No extension directory found, skipping extension installation."
-fi
-
-echo ""
 echo "Starting code-server with the following settings:"
 echo "  - Bind address: 0.0.0.0:8443"
 echo "  - User data directory: /config/.local/share/code-server"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Usage: ./build.sh <version> <latest_flag>
-# Example: ./build.sh 4.104.1 true
+# Example: ./build.sh 4.105.1 true
 
 # Exit on any error
 set -e

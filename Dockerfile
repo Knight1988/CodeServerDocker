@@ -14,10 +14,6 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     which code-server && code-server --version
 
-# Copy VSIX files to a permanent location
-COPY GitHub.copilot.vsix /usr/local/share/code-server-extensions/GitHub.copilot.vsix
-COPY GitHub.copilot-chat.vsix /usr/local/share/code-server-extensions/GitHub.copilot-chat.vsix
-
 # Copy entrypoint script
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
